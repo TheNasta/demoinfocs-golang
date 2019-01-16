@@ -70,8 +70,7 @@ func TestParticipants_Playing(t *testing.T) {
 	playing := gs.Participants().Playing()
 
 	assert.Len(t, playing, 2)
-	assert.Equal(t, terrorist, playing[0])
-	assert.Equal(t, ct, playing[1])
+	assert.ElementsMatch(t, []*common.Player{terrorist, ct}, playing)
 }
 
 func TestParticipants_TeamMembers(t *testing.T) {
