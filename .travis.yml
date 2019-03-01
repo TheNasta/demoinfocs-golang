@@ -6,13 +6,19 @@ go:
   - stable
   - master
 
+env:
+  - GO111MODULE=off
+
 matrix:
+  include:
+    - go: 1.11.x
+      env: GO111MODULE=on
+  exclude:
+    - go: 1.11.x
+      env: GO111MODULE=off
   # Failing on the development version of Go isn't too bad.
   allow_failures:
     - go: master
-
-env:
-  - GO111MODULE=on
 
 # Override Travis's default 'go get' step, since we use Go modules
 install:
